@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f2ef;
+  --foreground: #000000;
 }
 
 @theme inline {
@@ -10,12 +10,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Text Colors */
+  --color-text-primary: #424242;
+
+  /* Saju Graph Colors */
+  --color-saju-background: #f5f3ec;
+  --color-saju-border: #1b2f49;
+  --color-saju-destructive: #c23030;
+  --color-saju-accent: #18868c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f3f2ef;
+    --foreground: #000000;
   }
 }
 
