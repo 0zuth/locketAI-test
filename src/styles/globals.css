@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3f2ef;
+  --background: #ffffff;
   --foreground: #000000;
+}
+
+html {
+  font-size: 16px;
 }
 
 @theme inline {
@@ -19,11 +23,17 @@
   --color-saju-border: #1b2f49;
   --color-saju-destructive: #c23030;
   --color-saju-accent: #18868c;
+
+  /* Custom Breakpoints */
+  --breakpoint-xs: 375px;
+
+  /* Custom screen sizes */
+  --screen-xs: 375px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f3f2ef;
+    --background: #ffffff;
     --foreground: #000000;
   }
 }
@@ -32,4 +42,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fluid Typography */
+.text-fluid-responsive {
+  font-size: clamp(0.75rem, 4.46vw, 1.25rem); /* 12px ~ 20px */
 }
