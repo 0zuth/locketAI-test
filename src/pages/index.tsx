@@ -1,28 +1,43 @@
 import Image from "next/image";
+import SajuTable from "@/components/SajuTable";
 
 export default function Home() {
   return (
     <div>
       <h1 className="sr-only">제 1장 - 나의 사주팔자</h1>
-      <main className="max-w-md min-h-screen mx-auto">
-        <div className="relative w-full aspect-[375/2081] bg-saju-background">
+      <main className="relative max-w-md min-h-screen mx-auto" role="main">
+        <section
+          className="w-full aspect-[375/2081] bg-saju-background"
+          aria-label="사주팔자 웹툰 배경"
+        >
           <Image
             src="/images/background.png"
-            alt="이미지"
+            alt="사주팔자 웹툰 이미지"
             fill
             className="w-full h-full object-cover"
             priority
           />
-          <p className="absolute cursor-default text-center tracking-tight top-1/3 left-1/4 -translate-x-1/5 -translate-y-1/2 text-text-primary text-fluid-responsive">
-            이제 본격적으로 <br />
-            OO님의 사주팔자를 <br />
-            분석해볼 차례네요.
-          </p>
-          <p className="absolute cursor-default text-center tracking-tight top-1/2 right-2/5 -translate-y-1/3 text-text-primary text-fluid-responsive">
-            제가 oo님의 사주를 <br />
-            보기 쉽게 표로 정리했어요
-          </p>
-        </div>
+          <article
+            className="absolute cursor-default text-center tracking-tight top-1/3 left-1/4 -translate-x-1/5 -translate-y-1/2 text-text-primary text-[clamp(0.75rem,4.46vw,1.25rem)]"
+            aria-label="사주 분석 안내"
+          >
+            <p>
+              이제 본격적으로 <br />
+              OO님의 사주팔자를 <br />
+              분석해볼 차례네요.
+            </p>
+          </article>
+          <article
+            className="absolute cursor-default text-center tracking-tight top-1/2 left-1/6 -translate-y-1/3 text-text-primary text-[clamp(0.75rem,4.46vw,1.25rem)]"
+            aria-label="사주 표 정리 안내"
+          >
+            <p>
+              제가 oo님의 사주를 <br />
+              보기 쉽게 표로 정리했어요
+            </p>
+          </article>
+        </section>
+        <SajuTable />
       </main>
     </div>
   );
