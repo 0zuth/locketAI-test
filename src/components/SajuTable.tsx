@@ -294,15 +294,15 @@ export default function SajuTable() {
       aria-label="사주팔자 테이블"
     >
       <div className="relative w-full h-full bg-saju-background border-saju-border shadow-xl border-[3px] flex flex-col overflow-hidden">
-        {/* 제목 영역 */}
-        <header className="items-center flex flex-col gap-3 mt-10 mb-8 flex-shrink-0">
+        {/* 사용자 정보 영역 */}
+        <div className="items-center flex flex-col gap-3 mt-10 mb-8 flex-shrink-0">
           <h2 className="text-sm text-text-primary leading-none">
             김로켓님의 사주
           </h2>
           <p className="text-base text-text-primary font-bold leading-none">
             1980년 8월27일 08:10
           </p>
-        </header>
+        </div>
 
         {/* 사주팔자 테이블 영역 */}
         <div className="px-4.5 pb-10 flex-1 flex flex-col justify-center min-h-0 overflow-hidden">
