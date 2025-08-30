@@ -5,9 +5,12 @@ export default function Home() {
   return (
     <div>
       <h1 className="sr-only">제 1장 - 나의 사주팔자</h1>
-      <main className="relative max-w-md min-h-screen mx-auto" role="main">
+      <main
+        className="relative max-w-md mx-auto bg-saju-background"
+        role="main"
+      >
         <section
-          className="w-full aspect-[375/2081] bg-saju-background"
+          className="w-full aspect-[375/2081]"
           aria-label="사주팔자 웹툰 배경"
         >
           <Image
