@@ -28,9 +28,8 @@ const cellStyles = cva("flex flex-col", {
     type: {
       header:
         "font-bold border-b border-black text-[clamp(14px,4.46vw,20px)] p-[clamp(8px,1.34vw,12px)]", // 헤더 셀
-      label:
-        "bg-saju-background border-b border-r border-black p-[clamp(6px,0.89vw,8px)]", // 라벨 셀
-      data: "bg-white p-[clamp(6px,0.89vw,8px)]", // 일반 데이터 셀
+      label: "border-b border-r border-black p-[clamp(4px,0.89vw,7px)]", // 라벨 셀
+      data: "bg-white p-[clamp(4px,0.89vw,7px)]", // 일반 데이터 셀
       dataCompact: "bg-white p-[clamp(4px,0.67vw,6px)]", // 컴팩트 데이터 셀 (천간, 지지)
     },
     // 하단 테두리 스타일
@@ -71,6 +70,10 @@ interface TableRowProps {
     topText?: string;
     icon?: string;
     variant?: "destructive" | "primary" | "accent" | "white";
+    items?: Array<{
+      main?: string;
+      sub?: string;
+    }>;
   }>;
   rowIndex: number; // 행 인덱스 (0-7)
   cellType?: "data" | "dataCompact"; // 셀 타입
@@ -133,7 +136,14 @@ function TableRow({
         role="rowheader"
         aria-label={`${label} ${subLabel}`}
       >
-        <span className="text-[clamp(7px,2.23vw,10px)] font-bold leading-tight">
+        <span
+          className={`font-bold leading-tight ${
+            // 십이운성(4행)과 십이신살(5행)은 더 작은 텍스트 크기 사용
+            rowIndex === 4 || rowIndex === 5
+              ? "text-[clamp(6px,2.23vw,8px)]"
+              : "text-[clamp(8px,2.23vw,10px)]"
+          }`}
+        >
           {label}
         </span>
         <span className="text-[clamp(6px,1.79vw,8px)]">{subLabel}</span>
@@ -149,18 +159,37 @@ function TableRow({
           })}
           role="cell"
           aria-label={`${SAJU_DATA.header[index]} 시간 ${label} 정보: ${
-            item.main || item.ganJi || item.icon || ""
-          } ${item.sub || item.element || ""}`}
+            item.items
+              ? item.items
+                  .map((subItem) => `${subItem.main} ${subItem.sub}`)
+                  .join(", ")
+              : `${item.main || item.ganJi || item.icon || ""} ${
+                  item.sub || item.element || ""
+                }`
+          }`}
         >
           {/* 커스텀 렌더링 함수가 있으면 사용, 없으면 기본 렌더링 */}
           {renderCell ? (
             renderCell(item, index)
+          ) : item.items ? (
+            <div className="flex flex-col gap-1.5">
+              {item.items.map((subItem, subIndex) => (
+                <div key={subIndex} className="flex flex-col items-center">
+                  <span className="text-[clamp(10px,3.57vw,14px)] leading-tight">
+                    {subItem.main}
+                  </span>
+                  <span className="text-[clamp(8px,2.23vw,10px)]">
+                    {subItem.sub}
+                  </span>
+                </div>
+              ))}
+            </div>
           ) : (
             <>
-              <span className="text-[clamp(11px,3.57vw,16px)] leading-tight">
+              <span className="text-[clamp(10px,3.57vw,14px)] leading-tight">
                 {item.main || item.ganJi}
               </span>
-              <span className="text-[clamp(7px,2.23vw,10px)]">
+              <span className="text-[clamp(8px,2.23vw,10px)]">
                 {item.sub || item.element}
               </span>
             </>

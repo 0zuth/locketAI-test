@@ -106,6 +106,11 @@ export const SAJU_DATA = {
     { sub: "(없음)" },
     { main: "天乙", sub: "(천을귀인)" },
     { main: "太極", sub: "(태극귀인)" },
-    { main: "文昌", sub: "(문창귀인)" },
+    {
+      items: [
+        { main: "文昌", sub: "(문창귀인)" },
+        { main: "太極", sub: "(태극귀인)" },
+      ],
+    },
   ],
 };
