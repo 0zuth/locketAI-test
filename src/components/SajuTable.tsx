@@ -133,7 +133,9 @@ function TableRow({
         role="rowheader"
         aria-label={`${label} ${subLabel}`}
       >
-        <span className="text-[clamp(7px,2.23vw,10px)] font-bold">{label}</span>
+        <span className="text-[clamp(7px,2.23vw,10px)] font-bold leading-tight">
+          {label}
+        </span>
         <span className="text-[clamp(6px,1.79vw,8px)]">{subLabel}</span>
       </th>
       {/* 데이터 셀 (2-5열) */}
@@ -155,7 +157,7 @@ function TableRow({
             renderCell(item, index)
           ) : (
             <>
-              <span className="text-[clamp(11px,3.57vw,16px)]">
+              <span className="text-[clamp(11px,3.57vw,16px)] leading-tight">
                 {item.main || item.ganJi}
               </span>
               <span className="text-[clamp(7px,2.23vw,10px)]">
@@ -180,7 +182,7 @@ function TableHeader() {
           scope="col"
           role="columnheader"
           aria-label="구분"
-        ></th>
+        />
         {/* 2-5열 */}
         {SAJU_DATA.header.map((char, index) => (
           <th
